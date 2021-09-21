@@ -15,6 +15,8 @@ const {
   intersection,
   union,
   findMissingNumber,
+  findMinDistance,
+  getMajorityElement,
 } = require("./array_functions.js");
 
 const arrayToString = (arr) => {
@@ -60,4 +62,13 @@ console.log(
 console.log(
   "findMissingNumber of 7,5,3,6,4,1 is: " +
     findMissingNumber([7, 5, 3, 6, 4, 1])
+);
+//not working
+// console.log(
+//   "findMinDistance of 3,5,4,2,6,3,0,0,5,4,8,3 with x=3 and y=6 is: " +
+//     findMinDistance([3, 5, 4, 2, 6, 3, 0, 0, 5, 4, 8, 3], 3, 6)
+// );
+console.log(
+  "getMajorityElement of 1,2,3,3,4,3,3: " +
+    getMajorityElement([1, 2, 3, 3, 4, 3, 3])
 );

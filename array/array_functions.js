@@ -198,11 +198,73 @@ const findMissingNumber = (arr) => {
   let n = arr.length + 1;
 
   let sum = Math.floor((n * (n + 1)) / 2);
-  for (let i = 0; i <= n; i++) {
+  for (let i = 0; i < n - 1; i++) {
     sum -= arr[i];
   }
 
   return sum;
+};
+
+// Find number of pairs of elements in the array whose sum is equal to k
+const getPairsCount = (arr, k) => {};
+
+// Find minimum distance between two numbers
+//not working
+const findMinDistance = (arr, x, y) => {
+  let minDistance = Number.MAX_SAFE_INTEGER;
+  let prev;
+  let i = 0;
+  let n = arr.length;
+
+  for (i = 0; i < n; i++) {
+    if (arr[i] == x || arr[i] == y) {
+      prev = i;
+      break;
+    }
+  }
+
+  for (; i < n; i++) {
+    if (arr[i] == arr[x] || arr[i] == y) {
+      if (arr[prev] != arr[i] && i - prev < minDistance) {
+        minDistance = i - prev;
+      } else {
+        prev = i;
+      }
+    }
+    console.log(minDistance);
+  }
+
+  return minDistance;
+};
+
+//function to get majority element - moore voting alg
+const getMajorityElement = (arr) => {
+  let count = 1;
+  let majIndex = 0;
+
+  for (let i = 1; i < arr.length; i++) {
+    if (arr[i] == arr[majIndex]) {
+      count++;
+    } else {
+      count--;
+    }
+    if (count == 0) {
+      majIndex = i;
+      count = 1;
+    }
+  }
+
+  let majorityCount = 0;
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] == arr[majIndex]) {
+      majorityCount++;
+    }
+  }
+  if (majorityCount >= arr.length / 2) {
+    return arr[majIndex];
+  } else {
+    return -1;
+  }
 };
 
 module.exports = {
@@ -218,4 +280,6 @@ module.exports = {
   intersection,
   union,
   findMissingNumber,
+  findMinDistance,
+  getMajorityElement,
 };
